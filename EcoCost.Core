@@ -1,0 +1,16 @@
+onamespace EcoCost.Core
+{
+    public interface ICostScanner
+    {
+        string TargetFileName { get; } // e.g., "package.json", "ci.yml", "main.tf"
+        ScannerResult Analyze(string fileContent);
+    }
+
+    public class ScannerResult
+    {
+        public bool HasLeak { get; set; }
+        public decimal EstimatedMonthlyWaste { get; set; }
+        public string Title { get; set; }
+        public string RecommendationMarkdown { get; set; }
+    }
+}
